@@ -15,7 +15,7 @@ const AgingBucketsChart = () => {
     <div className="bg-white rounded-xl shadow-lg p-6 slide-up" style={{ animationDelay: '200ms' }}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Aging Analysis</h3>
-        <button className="text-sm text-blue-600 hover:text-blue-800">View Details</button>
+        {/* <button className="text-sm text-blue-600 hover:text-blue-800">View Details</button> */}
       </div>
       <div style={{ height: '300px' }}>
         <ResponsiveContainer width="100%" height="100%">
