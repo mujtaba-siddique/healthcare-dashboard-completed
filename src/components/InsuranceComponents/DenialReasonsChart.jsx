@@ -15,10 +15,7 @@ const DenialReasonsChart = () => {
     <div className="bg-white rounded-xl shadow-lg p-6 slide-up" style={{ animationDelay: '400ms' }}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Top Denial Reasons</h3>
-        <button className="flex items-center px-3 py-1 text-xs bg-red-100 text-red-700 rounded-full hover:bg-red-200 transition-colors">
-          <AlertTriangle className="h-3 w-3 mr-1" />
-          Action Required
-        </button>
+       
       </div>
       <div className="space-y-4">
         {denialReasonsData.map((reason, index) => (

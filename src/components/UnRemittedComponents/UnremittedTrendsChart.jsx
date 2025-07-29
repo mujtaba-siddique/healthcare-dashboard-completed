@@ -2,22 +2,21 @@ import React from 'react';
 import { Download, RefreshCw } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-// Mock data for unremitted trends
 const unremittedTrendsData = [
-  { month: 'Jan', amount: 45000, claims: 125, avgDays: 28 },
-  { month: 'Feb', amount: 52000, claims: 142, avgDays: 32 },
-  { month: 'Mar', amount: 48000, claims: 135, avgDays: 29 },
-  { month: 'Apr', amount: 38000, claims: 108, avgDays: 25 },
-  { month: 'May', amount: 42000, claims: 118, avgDays: 27 },
-  { month: 'Jun', amount: 35000, claims: 98, avgDays: 24 },
-];
-
+  { month: 'Jan', amount: 715000, claims: 210, avgDays: 30 },      // Mednet
+  { month: 'Feb', amount: 354000, claims: 180, avgDays: 28 },      // OIC
+  { month: 'Mar', amount: 269000, claims: 160, avgDays: 33 },      // FMC
+  { month: 'Apr', amount: 265000, claims: 175, avgDays: 31 },      // Nas
+  { month: 'May', amount: 204000, claims: 140, avgDays: 36 },      // Khat a Haya
+  { month: 'Jun', amount: 77000, claims: 95, avgDays: 27 },        // Nextcare
+  { month: 'Jul', amount: 65000, claims: 80, avgDays: 29 },        // Inayah
+]
 const UnremittedTrendsChart = () => {
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 slide-up">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Unremitted Trends</h3>
-        <div className="flex space-x-2">
+        {/* <div className="flex space-x-2">
           <button className="flex items-center px-3 py-1 text-xs bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 transition-colors">
             <Download className="h-3 w-3 mr-1" />
             Export
@@ -26,7 +25,7 @@ const UnremittedTrendsChart = () => {
             <RefreshCw className="h-3 w-3 mr-1" />
             Refresh
           </button>
-        </div>
+        </div> */}
       </div>
       <div style={{ height: '300px' }}>
         <ResponsiveContainer width="100%" height="100%">

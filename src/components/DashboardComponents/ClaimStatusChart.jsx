@@ -88,7 +88,7 @@ const ClaimStatusChart = () => {
               cy="45%"
               labelLine={false}
               label={renderCustomLabel}
-              outerRadius={100}
+              outerRadius={120}
               innerRadius={40}
               fill="#8884d8"
               dataKey="value"

@@ -1,13 +1,20 @@
 import React from 'react';
 import { AlertTriangle } from 'lucide-react';
 
-// Mock data for payer-wise analysis
+// Mock data waisa he rahega
 const payerWiseData = [
-  { payer: 'Medicare', amount: 125000, claims: 285, avgDays: 32, status: 'High Priority' },
-  { payer: 'Aetna', amount: 98000, claims: 225, avgDays: 28, status: 'Medium' },
-  { payer: 'Blue Cross', amount: 87000, claims: 198, avgDays: 35, status: 'High Priority' },
-  { payer: 'Cigna', amount: 65000, claims: 152, avgDays: 25, status: 'Low' },
-  { payer: 'Medicaid', amount: 45000, claims: 135, avgDays: 42, status: 'Critical' },
+  { payer: 'Mednet', amount: 715000, claims: 210, avgDays: 30, status: 'Medium' },
+  { payer: 'OIC', amount: 354000, claims: 180, avgDays: 28, status: 'High Priority' },
+  { payer: 'FMC', amount: 269000, claims: 160, avgDays: 33, status: 'Low' },
+  { payer: 'Nas', amount: 265000, claims: 175, avgDays: 31, status: 'Medium' },
+  { payer: 'Khat a Haya', amount: 204000, claims: 140, avgDays: 36, status: 'Critical' },
+  { payer: 'Nextcare', amount: 77000, claims: 95, avgDays: 27, status: 'High Priority' },
+  { payer: 'Inayah', amount: 65000, claims: 80, avgDays: 29, status: 'Low' },
+  { payer: 'NGI', amount: 60000, claims: 88, avgDays: 34, status: 'Medium' },
+  { payer: 'DHA', amount: 59000, claims: 76, avgDays: 26, status: 'High Priority' },
+  { payer: 'Almadallah', amount: 58000, claims: 69, avgDays: 32, status: 'Low' },
+  { payer: 'Neuron', amount: 58000, claims: 72, avgDays: 35, status: 'Critical' },
+  { payer: 'Ecare', amount: 55000, claims: 66, avgDays: 30, status: 'Medium' },
 ];
 
 const getStatusColor = (status) => {
@@ -25,12 +32,13 @@ const PayerAnalysisChart = () => {
     <div className="bg-white rounded-xl shadow-lg p-6 slide-up" style={{ animationDelay: '400ms' }}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Payer-wise Analysis</h3>
-        <button className="flex items-center px-3 py-1 text-xs bg-orange-100 text-orange-700 rounded-full hover:bg-orange-200 transition-colors">
+        {/* <button className="flex items-center px-3 py-1 text-xs bg-orange-100 text-orange-700 rounded-full hover:bg-orange-200 transition-colors">
           <AlertTriangle className="h-3 w-3 mr-1" />
           Action Required
-        </button>
+        </button> */}
       </div>
-      <div className="space-y-4">
+
+      <div className="space-y-4 max-h-[600px] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {payerWiseData.map((payer, index) => (
           <div key={index} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <div className="flex-1">

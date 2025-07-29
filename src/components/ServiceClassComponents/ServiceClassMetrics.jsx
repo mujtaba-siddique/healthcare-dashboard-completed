@@ -15,7 +15,7 @@ const metricsData = [
     icon: Activity,
     value: "8,294",
     label: "Active Claims",
-    color: "from-green-500 to-emerald-600",
+    color: "from-green-5200 to-emerald-600",
     change: "+12% from last month",
     changeType: "positive",
     delay: 100,
@@ -57,7 +57,7 @@ const MetricCard = ({
       <div className={`p-3 rounded-xl bg-gradient-to-br ${color}`}>
         <Icon className="h-6 w-6 text-white" />
       </div>
-      {change && (
+      {/* {change && (
         <div
           className={`flex items-center text-sm font-medium ${
             changeType === "positive" ? "text-green-600" : "text-red-600"
@@ -70,7 +70,7 @@ const MetricCard = ({
           />
           {change}
         </div>
-      )}
+      )} */}
     </div>
     <div className="mt-4">
       <p className="text-2xl font-bold text-gray-900">{value}</p>

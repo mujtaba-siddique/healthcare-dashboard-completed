@@ -1,40 +1,49 @@
 import React from "react";
 import {
   DollarSign,
-  FileText,
-  TrendingUp,
-  AlertTriangle,
+  ClipboardList, // New Icon for Claimed
+  XCircle,       // New Icon for Rejected
+  Hourglass,     // New Icon for Waiting
+  Percent,       // New Icon for Rej %
+  TrendingUp,    // Kept for the optional 'change' indicator
 } from "lucide-react";
 
-// Mock data for metric cards
+// Updated data based on your image
 const metricsData = [
   {
-    icon: DollarSign,
-    value: "$342K",
-    label: "Total Revenue",
-    color: "from-green-500 to-emerald-600",
+    icon: ClipboardList,
+    value: "2.6M",
+    label: "Claimed",
+    color: "from-blue-500 to-indigo-600",
     delay: 0,
   },
   {
-    icon: FileText,
-    value: "1,245",
-    label: "Total Claims",
-    color: "from-blue-500 to-indigo-600",
+    icon: DollarSign,
+    value: "2.5M",
+    label: "Paid",
+    color: "from-green-500 to-emerald-600",
     delay: 100,
   },
   {
-    icon: TrendingUp,
-    value: "92%",
-    label: "Collection Rate",
-    color: "from-purple-500 to-violet-600",
+    icon: XCircle,
+    value: "8,187",
+    label: "Rejected",
+    color: "from-red-500 to-rose-600",
     delay: 200,
   },
   {
-    icon: AlertTriangle,
-    value: "$28K",
-    label: "Outstanding AR",
-    color: "from-orange-500 to-red-500",
+    icon: Hourglass,
+    value: "103.5K",
+    label: "Waiting",
+    color: "from-orange-500 to-amber-600",
     delay: 300,
+  },
+  {
+    icon: Percent,
+    value: "0.3%",
+    label: "Rej %",
+    color: "from-purple-500 to-violet-600",
+    delay: 400,
   },
 ];
 
@@ -48,7 +57,7 @@ const MetricCard = ({
   delay = 0,
 }) => (
   <div
-    className={`metric-card p-6 fade-in`}
+    className={`metric-card p-6 fade-in`} // Assuming 'metric-card' and 'fade-in' are defined in your CSS
     style={{ animationDelay: `${delay}ms` }}
   >
     <div className="flex items-center justify-between">
@@ -79,7 +88,8 @@ const MetricCard = ({
 
 const MetricCards = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    // Changed grid to support 5 columns on large screens
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
       {metricsData.map((metric, index) => (
         <MetricCard
           key={index}

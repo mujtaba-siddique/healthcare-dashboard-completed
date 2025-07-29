@@ -22,7 +22,7 @@ const metricsData = [
   },
   {
     icon: Clock,
-    value: "5.2 days",
+    value: "5 days",
     label: "Avg Processing Time",
     color: "from-blue-500 to-indigo-600",
     change: "-0.8 days improvement",
@@ -95,7 +95,7 @@ const PendingResubMetrics = () => {
           value={metric.value}
           label={metric.label}
           color={metric.color}
-          change={metric.change}
+          // change={metric.change}
           changeType={metric.changeType}
           delay={metric.delay}
         />

@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import Header from "./components/Header.jsx";
 import Sidebar from "./components/Sidebar.jsx";
-import Dashboard from "./components/Dashboard.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 import InsurancePage from "./pages/InsurancePage";
 import UnremittedPage from "./pages/UnremittedPage";
 import ServiceClassPage from "./pages/ServiceClassPage";
@@ -83,7 +83,7 @@ const AppContent = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1500);
+    const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -152,12 +152,21 @@ const AppContent = () => {
             <Route path="/insurance" element={<InsurancePage />} />
             <Route path="/unremitted" element={<UnremittedPage />} />
             <Route path="/service-class" element={<ServiceClassPage />} />
-            <Route path="/service-distribution" element={<ServiceDistributionPage />} />
+            <Route
+              path="/service-distribution"
+              element={<ServiceDistributionPage />}
+            />
             <Route path="/sub-aging" element={<SubAgingPage />} />
-            <Route path="/rejection-analysis" element={<RejectionAnalysisPage />} />
+            <Route
+              path="/rejection-analysis"
+              element={<RejectionAnalysisPage />}
+            />
             <Route path="/pending-resub" element={<PendingResubPage />} />
             <Route path="/claim-average" element={<ClaimAveragePage />} />
-            <Route path="/settlement-report" element={<SettlementReportPage />} />
+            <Route
+              path="/settlement-report"
+              element={<SettlementReportPage />}
+            />
           </Routes>
         </main>
       </div>

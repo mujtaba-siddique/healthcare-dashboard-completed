@@ -95,11 +95,11 @@ const Sidebar = ({
                   <span className="flex-1 text-left text-sm">
                     {item.text}
                   </span>
-                  {item.badge && (
+                  {/* {item.badge && (
                     <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-600">
                       {item.badge}
                     </span>
-                  )}
+                  )} */}
                 </>
               )}
             </button>
