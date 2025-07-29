@@ -20,7 +20,7 @@ const Sidebar = ({
   return (
     <div
       className={`fixed inset-y-0 left-0 z-50 bg-white/95 backdrop-blur-sm shadow-xl border-r border-gray-200/50 transform transition-all duration-300 ease-out lg:translate-x-0 lg:static lg:inset-0 custom-scrollbar overflow-y-auto flex flex-col ${
-        sidebarCollapsed ? "w-20" : "w-72"
+        sidebarCollapsed ? "w-20" : "w-60"
       } ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
     >
       {/* Sidebar Header */}
