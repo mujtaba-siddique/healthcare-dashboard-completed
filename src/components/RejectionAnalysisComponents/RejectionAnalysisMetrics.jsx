@@ -95,7 +95,7 @@ const RejectionAnalysisMetrics = () => {
           value={metric.value}
           label={metric.label}
           color={metric.color}
-          change={metric.change}
+          // change={metric.change}
           changeType={metric.changeType}
           delay={metric.delay}
         />
