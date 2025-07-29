@@ -128,7 +128,7 @@ const DetailedAgingBucketsTable = () => {
       'Payer Name': row.payerName,
       'Age Range': row.range,
       'Total Amount': row.amount,
-      '# of Claims': row.claims,
+      ' Claims': row.claims,
       'Avg. Claim Value': Math.round(row.amount / row.claims),
       'Priority': getPriorityDetails(row.range).label
     }));
@@ -160,9 +160,11 @@ const DetailedAgingBucketsTable = () => {
           <thead>
             <tr className="border-b border-gray-200 bg-gray-50">
               <th className="text-left py-3 px-4 font-semibold text-gray-700">Payer Name</th>
+              
               <th className="text-left py-3 px-4 font-semibold text-gray-700">Age Range</th>
+              
               <th className="text-left py-3 px-4 font-semibold text-gray-700">Total Amount</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700"># of Claims</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700">Claims</th>
               <th className="text-left py-3 px-4 font-semibold text-gray-700">Avg. Claim Value</th>
               <th className="text-left py-3 px-4 font-semibold text-gray-700">Priority</th>
             </tr>
@@ -175,19 +177,23 @@ const DetailedAgingBucketsTable = () => {
 
               return (
                 <tr key={index} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                  <td className="py-3 px-4 font-medium text-gray-900">{data.payerName}</td>
                   <td className="py-3 px-4">
                     <div className="flex items-center">
                       <div 
                         className="w-3 h-3 rounded-full mr-3" 
                         style={{ backgroundColor: rangeColor }}
                       ></div>
-                      <span className="font-medium text-gray-700">{data.range}</span>
+                      
+                      <span className="font-medium text-gray-700">{data.payerName}</span>
+                      
+                       
                     </div>
                   </td>
-                  <td className="py-3 px-4 text-gray-600">SAR {data.amount.toLocaleString()}</td>
+                 <td className="py-3 px-4 font-medium text-gray-900">{data.range}</td>
+                  
+                  <td className="py-3 px-4 text-gray-600">$ {data.amount.toLocaleString()}</td>
                   <td className="py-3 px-4 text-gray-600">{data.claims}</td>
-                  <td className="py-3 px-4 text-gray-600">SAR {avgClaimValue.toLocaleString()}</td>
+                  <td className="py-3 px-4 text-gray-600">$ {avgClaimValue.toLocaleString()}</td>
                   <td className="py-3 px-4">
                     <span className={`px-2 py-1 text-xs font-semibold rounded-full ${priority.className}`}>
                       {priority.label}
