@@ -82,7 +82,7 @@ const CustomTooltip = ({ active, payload }) => {
 
 const RejectionReasonsPieChart = () => {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="bg-white rounded-xl shadow-sm p-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-1">
         Top Rejection Reasons
       </h2>
