@@ -16,8 +16,6 @@ const yearlyRawData = [
   { year: '2022', Submissions: 2100000, Payments: 1950000, Rejections: 75000 },
   { year: '2023', Submissions: 2400000, Payments: 2250000, Rejections: 85000 },
   { year: '2024', Submissions: 2800000, Payments: 2680000, Rejections: 80000 },
-  // 3. Data for the current year (2025) will be handled as YTD
-  // For this example, let's assume it's ~7/12ths of the way through the year
   { year: '2025', Submissions: 1700000, Payments: 1600000, Rejections: 48000 },
 ];
 
