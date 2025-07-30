@@ -1,42 +1,50 @@
 import React from "react";
-import { FileText, XCircle, TrendingDown, AlertCircle } from "lucide-react";
+import {
+  DollarSign,
+  ClipboardList, // New Icon for Claimed
+  XCircle,       // New Icon for Rejected
+  Hourglass,     // New Icon for Waiting
+  Percent,       // New Icon for Rej %
+  TrendingUp,    // Kept for the optional 'change' indicator
+} from "lucide-react";
 
+// Is component ko aap apne file mein kahin bhi rakh sakte hain
+const AedIcon = ({ className }) => (
+  <span className={`font-semibold text-center ${className}`} style={{ lineHeight: '1' }}>
+    AED
+  </span>
+);
+// Updated data based on your image
 const metricsData = [
   {
-    icon: XCircle,
-    value: "700",
-    label: "Total Rejections",
-    color: "from-red-500 to-red-600",
-    change: "This month",
-    changeType: "neutral",
+    icon: ClipboardList,
+    value: " 2.58M",
+    label: "Submission",
+    color: "from-blue-500 to-indigo-600",
     delay: 0,
   },
+  
   {
-    icon: TrendingDown,
-    value: "20.0%",
-    label: "Rejection Rate",
-    color: "from-orange-500 to-red-500",
-    change: "-1.3% from last month",
-    changeType: "positive",
+    icon: AedIcon, // Yahan DollarSign ki jagah AedIcon ka istemaal karein
+    value: "2.47M",
+    label: "Paid",
+    color: "from-green-500 to-emerald-600",
     delay: 100,
-  },
+},
   {
-    icon: FileText,
-    value: "Missing Docs",
-    label: "Top Reason",
-    color: "from-purple-500 to-violet-600",
-    change: "35% of rejections",
-    changeType: "negative",
+    icon: XCircle,
+    value: "8,186.74 ",
+    label: "Rejected",
+    color: "from-red-500 to-rose-600",
     delay: 200,
   },
+  
   {
-    icon: AlertCircle,
-    value: "3.2 days",
-    label: "Avg Resolution",
-    color: "from-blue-500 to-indigo-600",
-    change: "-0.5 days improvement",
-    changeType: "positive",
-    delay: 300,
+    icon: Percent,
+    value: "0.33%",
+    label: "Rej %",
+    color: "from-purple-500 to-violet-600",
+    delay: 400,
   },
 ];
 
@@ -50,7 +58,7 @@ const MetricCard = ({
   delay = 0,
 }) => (
   <div
-    className={`bg-white rounded-lg shadow-sm p-6 fade-in`}
+    className={`metric-card p-6 fade-in`} // Assuming 'metric-card' and 'fade-in' are defined in your CSS
     style={{ animationDelay: `${delay}ms` }}
   >
     <div className="flex items-center justify-between">
@@ -60,20 +68,14 @@ const MetricCard = ({
       {change && (
         <div
           className={`flex items-center text-sm font-medium ${
-            changeType === "positive" 
-              ? "text-green-600" 
-              : changeType === "negative" 
-              ? "text-red-600" 
-              : "text-gray-600"
+            changeType === "positive" ? "text-green-600" : "text-red-600"
           }`}
         >
-          {changeType !== "neutral" && (
-            <TrendingDown
-              className={`h-4 w-4 mr-1 ${
-                changeType === "negative" ? "rotate-180" : ""
-              }`}
-            />
-          )}
+          <TrendingUp
+            className={`h-4 w-4 mr-1 ${
+              changeType === "negative" ? "rotate-180" : ""
+            }`}
+          />
           {change}
         </div>
       )}
@@ -85,9 +87,10 @@ const MetricCard = ({
   </div>
 );
 
-const RejectionAnalysisMetrics = () => {
+const MetricCards = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    // Changed grid to support 5 columns on large screens
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
       {metricsData.map((metric, index) => (
         <MetricCard
           key={index}
@@ -95,8 +98,6 @@ const RejectionAnalysisMetrics = () => {
           value={metric.value}
           label={metric.label}
           color={metric.color}
-          // change={metric.change}
-          changeType={metric.changeType}
           delay={metric.delay}
         />
       ))}
@@ -104,5 +105,4 @@ const RejectionAnalysisMetrics = () => {
   );
 };
 
-export default RejectionAnalysisMetrics;
-
+export default MetricCards;

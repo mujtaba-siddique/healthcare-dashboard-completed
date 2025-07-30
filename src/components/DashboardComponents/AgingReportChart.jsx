@@ -39,7 +39,7 @@ const AgingReportChart = () => {
             </div>
             <div className="ml-4 text-right">
               <p className="text-lg font-bold text-gray-900">
-                ${item.amount.toLocaleString()}
+                AED{" "} {item.amount.toLocaleString()}
               </p>
               <p className="text-sm text-gray-600">{item.count} claims</p>
             </div>

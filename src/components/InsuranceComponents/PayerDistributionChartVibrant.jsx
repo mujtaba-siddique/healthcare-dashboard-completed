@@ -64,7 +64,7 @@ const CustomTooltip = ({ active, payload, label }) => {
         <p className="font-semibold mb-2 text-base text-slate-100">{label}</p>
         <p className="text-sm flex justify-between text-slate-300">
           <span>Amount:</span>
-          <span className="font-bold text-white">${data.amount.toLocaleString()}</span>
+          <span className="font-bold text-white">AED{" "}{data.amount.toLocaleString()}</span>
         </p>
         <p className="text-sm flex justify-between text-slate-300">
           <span>Share:</span>
@@ -79,7 +79,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 const PayerDistributionChartVibrant = () => {
   return (
     // 2. Light theme ke liye container ko wapas bg-white kiya gaya
-    <div className="bg-white rounded-xl shadow-lg p-6 slide-up payer-chart-container">
+    <div className="bg-white rounded-xl shadow-sm p-6 slide-up payer-chart-container">
       {/* 3. Title text ko dark kiya gaya */}
       <h3 className="text-xl font-semibold text-gray-900 mb-6">
         Top Payers by Amount

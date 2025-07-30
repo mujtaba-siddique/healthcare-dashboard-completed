@@ -1,42 +1,56 @@
 import React from "react";
-import { Users, TrendingUp, Activity, BarChart3 } from "lucide-react";
+import {
+  DollarSign,
+  ClipboardList, // New Icon for Claimed
+  XCircle,       // New Icon for Rejected
+  Hourglass,     // New Icon for Waiting
+  Percent,       // New Icon for Rej %
+  TrendingUp,    // Kept for the optional 'change' indicator
+} from "lucide-react";
 
+// Is component ko aap apne file mein kahin bhi rakh sakte hain
+const AedIcon = ({ className }) => (
+  <span className={`font-semibold text-center ${className}`} style={{ lineHeight: '1' }}>
+    AED
+  </span>
+);
+// Updated data based on your image
 const metricsData = [
   {
-    icon: Users,
-    value: "12",
-    label: "Total Service Classes",
+    icon: ClipboardList,
+    value: "2M",
+    label: "Claimed",
     color: "from-blue-500 to-indigo-600",
-    change: "+2 this month",
-    changeType: "positive",
     delay: 0,
   },
+  
   {
-    icon: Activity,
-    value: "8,294",
-    label: "Active Claims",
-    color: "from-green-5200 to-emerald-600",
-    change: "+12% from last month",
-    changeType: "positive",
+    icon: AedIcon, // Yahan DollarSign ki jagah AedIcon ka istemaal karein
+    value: "2M",
+    label: "Paid",
+    color: "from-green-500 to-emerald-600",
     delay: 100,
-  },
+},
   {
-    icon: TrendingUp,
-    value: "$13.4M",
-    label: "Total Revenue",
-    color: "from-purple-500 to-violet-600",
-    change: "+8% from last month",
-    changeType: "positive",
+    icon: XCircle,
+    value: "7,449",
+    label: "Rejected",
+    color: "from-red-500 to-rose-600",
     delay: 200,
   },
   {
-    icon: BarChart3,
-    value: "$1,615",
-    label: "Avg Claim Value",
-    color: "from-orange-500 to-red-500",
-    change: "-2% from last month",
-    changeType: "negative",
+    icon: Hourglass,
+    value: "71.5K",
+    label: "Waiting",
+    color: "from-orange-500 to-amber-600",
     delay: 300,
+  },
+  {
+    icon: Percent,
+    value: "0.4%",
+    label: "Rej %",
+    color: "from-purple-500 to-violet-600",
+    delay: 400,
   },
 ];
 
@@ -50,14 +64,14 @@ const MetricCard = ({
   delay = 0,
 }) => (
   <div
-    className={`bg-white rounded-lg shadow-sm p-6 fade-in`}
+    className={`metric-card p-6 fade-in`} // Assuming 'metric-card' and 'fade-in' are defined in your CSS
     style={{ animationDelay: `${delay}ms` }}
   >
     <div className="flex items-center justify-between">
       <div className={`p-3 rounded-xl bg-gradient-to-br ${color}`}>
         <Icon className="h-6 w-6 text-white" />
       </div>
-      {/* {change && (
+      {change && (
         <div
           className={`flex items-center text-sm font-medium ${
             changeType === "positive" ? "text-green-600" : "text-red-600"
@@ -70,7 +84,7 @@ const MetricCard = ({
           />
           {change}
         </div>
-      )} */}
+      )}
     </div>
     <div className="mt-4">
       <p className="text-2xl font-bold text-gray-900">{value}</p>
@@ -79,9 +93,10 @@ const MetricCard = ({
   </div>
 );
 
-const ServiceClassMetrics = () => {
+const MetricCards = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    // Changed grid to support 5 columns on large screens
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
       {metricsData.map((metric, index) => (
         <MetricCard
           key={index}
@@ -89,8 +104,6 @@ const ServiceClassMetrics = () => {
           value={metric.value}
           label={metric.label}
           color={metric.color}
-          change={metric.change}
-          changeType={metric.changeType}
           delay={metric.delay}
         />
       ))}
@@ -98,5 +111,4 @@ const ServiceClassMetrics = () => {
   );
 };
 
-export default ServiceClassMetrics;
-
+export default MetricCards;

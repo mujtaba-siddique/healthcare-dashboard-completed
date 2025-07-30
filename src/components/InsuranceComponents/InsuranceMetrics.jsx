@@ -8,6 +8,12 @@ import {
   TrendingUp,    // Kept for the optional 'change' indicator
 } from "lucide-react";
 
+const AedIcon = ({ className }) => (
+  <span className={`font-semibold text-center ${className}`} style={{ lineHeight: '1' }}>
+    AED
+  </span>
+);
+
 // Updated data based on your image
 const metricsData = [
   {
@@ -18,12 +24,12 @@ const metricsData = [
     delay: 0,
   },
   {
-    icon: DollarSign,
+    icon: AedIcon, // Yahan DollarSign ki jagah AedIcon ka istemaal karein
     value: "1.9M",
     label: "Paid",
     color: "from-green-500 to-emerald-600",
     delay: 100,
-  },
+},
   {
     icon: XCircle,
     value: "7,415",

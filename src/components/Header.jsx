@@ -84,7 +84,7 @@ const Header = ({
           <div className="relative">
             <button className="flex items-center space-x-2 p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">
-                G
+                J
               </div>
               <ChevronDown className="h-4 w-4" />
             </button>

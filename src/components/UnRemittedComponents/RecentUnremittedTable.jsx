@@ -3,12 +3,12 @@ import { Search } from 'lucide-react';
 
 // Mock data for recent unremitted claims
 const recentUnremitted = [
-  { id: 'UR-2024-001', patient: 'Alice Johnson', payer: 'Mednet',amount: '$2,450', days: 45, priority: 'High', date: '2023-12-01' },
-  { id: 'UR-2024-002', patient: 'Bob Smith', payer: 'OIC',  amount: '$1,850', days: 32, priority: 'Medium', date: '2023-12-15' },
-  { id: 'UR-2024-003', patient: 'Carol Davis', payer: 'FMC',  amount: '$3,200', days: 58, priority: 'Critical', date: '2023-11-28' },
-  { id: 'UR-2024-004', patient: 'David Wilson', payer: 'Nas',  amount: '$1,650', days: 28, priority: 'Low', date: '2023-12-18' },
-  { id: 'UR-2024-005', patient: 'Eva Brown', payer: 'Khat a Haya', amount: '$2,100', days: 67, priority: 'Critical', date: '2023-11-15' },
-  { id: 'UR-2024-006', patient: 'inva Brown', payer: 'Nextcare', amount: '$2,100', days: 67, priority: 'Critical', date: '2023-11-15' },
+  { id: 'UR-2024-001', patient: 'Alice Johnson', payer: 'Mednet',amount: 'AED 2,450', days: 45, priority: 'High', date: '2023-12-01' },
+  { id: 'UR-2024-002', patient: 'Bob Smith', payer: 'OIC',  amount: 'AED 1,850', days: 32, priority: 'Medium', date: '2023-12-15' },
+  { id: 'UR-2024-003', patient: 'Carol Davis', payer: 'FMC',  amount: 'AED 3,200', days: 58, priority: 'Critical', date: '2023-11-28' },
+  { id: 'UR-2024-004', patient: 'David Wilson', payer: 'Nas',  amount: 'AED 1,650', days: 28, priority: 'Low', date: '2023-12-18' },
+  { id: 'UR-2024-005', patient: 'Eva Brown', payer: 'Khat a Haya', amount: 'AED 2,100', days: 67, priority: 'Critical', date: '2023-11-15' },
+  { id: 'UR-2024-006', patient: 'inva Brown', payer: 'Nextcare', amount: 'AED 2,100', days: 67, priority: 'Critical', date: '2023-11-15' },
 ];
 
 const getPriorityColor = (priority) => {
@@ -31,7 +31,7 @@ const RecentUnremittedTable = () => {
   );
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 slide-up" style={{ animationDelay: '600ms' }}>
+    <div className="bg-white rounded-xl shadow-sm p-6 slide-up" style={{ animationDelay: '600ms' }}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Recent Unremitted Claims</h3>
         <div className="relative">

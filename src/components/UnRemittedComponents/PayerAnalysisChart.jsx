@@ -29,7 +29,7 @@ const getStatusColor = (status) => {
 
 const PayerAnalysisChart = () => {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 slide-up" style={{ animationDelay: '400ms' }}>
+    <div className="bg-white rounded-xl shadow-sm p-6 slide-up" style={{ animationDelay: '400ms' }}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Payer-wise Analysis</h3>
         {/* <button className="flex items-center px-3 py-1 text-xs bg-orange-100 text-orange-700 rounded-full hover:bg-orange-200 transition-colors">
@@ -50,7 +50,7 @@ const PayerAnalysisChart = () => {
               </div>
               <div className="grid grid-cols-3 gap-4 text-sm text-gray-600">
                 <div>
-                  <p className="font-medium">${payer.amount.toLocaleString()}</p>
+                  <p className="font-medium">AED{" "}{payer.amount.toLocaleString()}</p>
                   <p className="text-xs">Amount</p>
                 </div>
                 <div>

@@ -20,7 +20,7 @@ const Sidebar = ({
   return (
     <div
       className={`fixed inset-y-0 left-0 z-50 bg-white/95 backdrop-blur-sm shadow-xl border-r border-gray-200/50 transform transition-all duration-300 ease-out lg:translate-x-0 lg:static lg:inset-0 custom-scrollbar overflow-y-auto flex flex-col ${
-        sidebarCollapsed ? "w-20" : "w-60"
+        sidebarCollapsed ? "w-15" : "w-65"
       } ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
     >
       {/* Sidebar Header */}
@@ -29,8 +29,14 @@ const Sidebar = ({
           <div className="flex items-center">
             <Activity className="h-6 w-6 text-blue-600" />
             <div className="ml-2">
-              <p className="text-lg font-bold text-gray-800">HealthCare RCM</p>
-              <p className="text-xs text-gray-500">Dashboard v2.0</p>
+              {/* <p className="text-lg font-bold text-gray-800">HealthCare RCM</p> */}
+
+              <p className="text-lg font-bold">
+  <span className="text-white">Prectice</span>{' '}
+  <span className="text-white">Health</span>
+</p>
+
+              <p className="text-xs text-gray-500">Dashboard </p>
             </div>
           </div>
         )}
@@ -60,11 +66,11 @@ const Sidebar = ({
         <div className="p-6 border-b border-gray-200/50">
           <div className="flex items-center">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-200 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold">
-              G
+              J
             </div>
             <div className="ml-3">
-              <p className="text-sm font-semibold text-gray-900">Gavano</p>
-              <p className="text-xs text-gray-500">RCM Manager</p>
+              <p className="text-sm font-semibold text-gray-900">Johe Doe</p>
+              <p className="text-xs text-gray-500">Billing Manager</p>
             </div>
           </div>
         </div>

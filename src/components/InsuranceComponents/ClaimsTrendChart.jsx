@@ -11,7 +11,7 @@ import {
   Legend
 } from 'recharts';
 
-// डेटा वही रहेगा
+
 const insuranceClaimsData = [
   { month: 'Jan', submitted: 245, approved: 220, denied: 15, pending: 10 },
   { month: 'Feb', submitted: 268, approved: 240, denied: 18, pending: 10 },
@@ -22,14 +22,14 @@ const insuranceClaimsData = [
   { month: 'Jul', submitted: 380, approved: 350, denied: 15, pending: 15 },
 ];
 
-// 1. MetricCards के अनुसार रंगों को परिभाषित करें
+
 const statusColors = {
   approved: "#10b981", // Green for "Paid/Approved"
   pending: "#f59e0b",  // Orange for "Waiting/Pending"
   denied: "#ef4444",   // Red for "Rejected/Denied"
 };
 
-// 2. एक सरल और साफ़ टूलटिप
+
 const SimpleTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
@@ -52,13 +52,13 @@ const SimpleTooltip = ({ active, payload, label }) => {
 
 const SimpleClaimsChart = () => {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 slide-up">
+    <div className="bg-white rounded-xl shadow-sm p-6 slide-up">
       <div className="flex items-center justify-between mb-6">
-        {/* 3. टाइटल को और सटीक बनाया गया */}
-        <h3 className="text-xl font-semibold text-gray-900">Monthly Claims Status</h3>
+        
+        <h3 className="text-xl font-semibold text-gray-900 ">Monthly Claims Status</h3>
         
       </div>
-      <div style={{ height: '300px' }}>
+      <div style={{ height: '400px' }}>
         <ResponsiveContainer width="100%" height="100%">
           {/* 4. AreaChart का उपयोग करें */}
           <AreaChart data={insuranceClaimsData}>

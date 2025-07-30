@@ -8,29 +8,41 @@ import RecentSettlementsTable from "../components/SettlementReportComponents/Rec
 
 const SettlementReportPage = () => {
   return (
-    <div className="space-y-6">
+    <div className="max-w-7xl mx-auto p-1 md:p-3">
       {/* Page Header */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
-      <h1 className="text-2xl font-bold text-gray-900 mb-2">Settlement Report</h1>
-      <p className="text-gray-600">
-        Track and analyze claim settlements, payment trends, and payer performance.
-      </p>
-    </div>
+      <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          Settlement Report
+        </h1>
+        <p className="text-gray-600">
+          Track and analyze claim settlements, payment trends, and payer
+          performance.
+        </p>
+      </div>
 
-      {/* Summary Cards */}
-      <SummaryCards />
+      {/* Summary Cards
+      <div className="mb-8">
+        <SummaryCards />
+      </div> */}
+      
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Charts Row (Side-by-side) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <SettlementTrendsChart />
         <SettlementsByPayerChart />
       </div>
 
-      {/* Payer Performance Table */}
-      <PayerPerformanceTable />
+       {/* Recent Settlements Table */}
+      <div className="mb-8">
+        <RecentSettlementsTable />
+      </div>
 
-      {/* Recent Settlements */}
-      <RecentSettlementsTable />
+      {/* Payer Performance Table (Full Width) */}
+      <div className="mb-8">
+        <PayerPerformanceTable />
+      </div>
+
+     
     </div>
   );
 };

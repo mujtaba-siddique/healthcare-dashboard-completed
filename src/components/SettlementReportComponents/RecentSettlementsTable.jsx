@@ -1,146 +1,129 @@
-import React from "react";
+import React from 'react';
+import { Bar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 
-const RecentSettlementsTable = () => {
-  const recentSettlements = [
-    {
-      id: "SET-001",
-      claimId: "CLM-1234",
-      patient: "John Doe",
-      payer: "Medicare",
-      service: "Emergency",
-      originalAmount: 2500,
-      settledAmount: 2200,
-      settlementDate: "2024-01-15",
-      daysToSettle: 16,
-    },
-    {
-      id: "SET-002",
-      claimId: "CLM-1235",
-      patient: "Jane Smith",
-      payer: "Blue Cross",
-      service: "Outpatient",
-      originalAmount: 450,
-      settledAmount: 420,
-      settlementDate: "2024-01-14",
-      daysToSettle: 12,
-    },
-    {
-      id: "SET-003",
-      claimId: "CLM-1236",
-      patient: "Bob Johnson",
-      payer: "Aetna",
-      service: "Diagnostic",
-      originalAmount: 780,
-      settledAmount: 750,
-      settlementDate: "2024-01-13",
-      daysToSettle: 18,
-    },
-    {
-      id: "SET-004",
-      claimId: "CLM-1237",
-      patient: "Alice Brown",
-      payer: "Cigna",
-      service: "Surgical",
-      originalAmount: 5200,
-      settledAmount: 4800,
-      settlementDate: "2024-01-12",
-      daysToSettle: 22,
-    },
-    {
-      id: "SET-005",
-      claimId: "CLM-1238",
-      patient: "Charlie Wilson",
-      payer: "UnitedHealth",
-      service: "Inpatient",
-      originalAmount: 3400,
-      settledAmount: 3200,
-      settlementDate: "2024-01-11",
-      daysToSettle: 15,
-    },
+// Chart.js के आवश्यक हिस्से रजिस्टर करें
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const TotalProviderRevenueChart = () => {
+  const sourceData = [
+    { id: "3", period: "January", ecare: 197.27, fmc: 0.0, mednet: 37328.43, nas: 129.54, nextcare: 457.02, ngi: null, oic: 13231.98 },
+    { id: "2", period: "February", ecare: 192.03, fmc: null, mednet: 113.97, nas: 189.18, nextcare: 82.48, ngi: 173.23, oic: 10135.56 },
+    { id: "1", period: "March", ecare: null, fmc: null, mednet: 36.73, nas: null, nextcare: null, ngi: 50.36, oic: null },
   ];
 
+  const providerKeys = ['ecare', 'fmc', 'mednet', 'nas', 'nextcare', 'ngi', 'oic'];
+  
+  // 1. हर प्रोवाइडर के लिए टोटल रेवेन्यू की गणना करें
+  const totalRevenueByProvider = providerKeys.map(provider => {
+    return sourceData.reduce((total, monthData) => total + (monthData[provider] || 0), 0);
+  });
+  
+  // प्रोफेशनल कलर पैलेट
+  const providerColors = [
+    '#4C51BF', '#ED64A6', '#38A169', '#ECC94B',
+    '#F56565', '#4299E1', '#9F7AEA'
+  ];
+
+  const chartData = {
+    labels: providerKeys.map(p => p.toUpperCase()),
+    datasets: [
+      {
+        label: 'Total Revenue',
+        data: totalRevenueByProvider,
+        backgroundColor: providerColors, // हर बार के लिए अलग रंग
+        borderColor: providerColors,
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Total Revenue by Insurance Provider (Jan-Mar)',
+        font: { size: 18, weight: 'bold' },
+        padding: { top: 10, bottom: 20 },
+        color: '#1a202c'
+      },
+      // 2. लेजेंड (Legend) की जरूरत नहीं है, इसलिए इसे हटा दिया गया है
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        callbacks: {
+          label: function (context) {
+            let label = context.dataset.label || '';
+            if (label) label += ': ';
+            if (context.parsed.y !== null) {
+              label += new Intl.NumberFormat('en-AE', {
+                style: 'currency',
+                currency: 'AED',
+              }).format(context.parsed.y);
+            }
+            return label;
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        // 3. स्टैकिंग (Stacking) को बंद कर दिया गया है
+        stacked: false, 
+        grid: { display: false },
+        title: {
+          display: true,
+          text: 'Insurance Provider',
+          font: { size: 14, weight: 'bold' },
+          color: '#4a5568'
+        }
+      },
+      y: {
+        stacked: false,
+        beginAtZero: true,
+        grid: { color: '#e2e8f0' },
+        title: {
+          display: true,
+          text: 'Total Revenue (AED)',
+          font: { size: 14, weight: 'bold' },
+          color: '#4a5568'
+        },
+        ticks: {
+          callback: function (value) {
+            if (value >= 1000) return `${value / 1000}k`;
+            return value;
+          },
+        },
+      },
+    },
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-sm">
-      <div className="p-6 border-b border-gray-200">
-        <h2 className="text-lg font-semibold text-gray-900">Recent Settlements</h2>
-        <p className="text-sm text-gray-600 mt-1">
-          Latest settled claims and their details.
-        </p>
-      </div>
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Settlement ID
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Claim ID
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Patient
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Payer
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Service
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Original Amount
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Settled Amount
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Settlement Date
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Days to Settle
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {recentSettlements.map((settlement) => (
-              <tr key={settlement.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">{settlement.id}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{settlement.claimId}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{settlement.patient}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{settlement.payer}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{settlement.service}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">
-                    ${settlement.originalAmount.toLocaleString()}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">
-                    ${settlement.settledAmount.toLocaleString()}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{settlement.settlementDate}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{settlement.daysToSettle}</div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm w-full  mx-auto">
+      <div className="relative h-96 md:h-[400px]">
+        <Bar options={options} data={chartData} />
       </div>
     </div>
   );
 };
 
-export default RecentSettlementsTable;
+export default TotalProviderRevenueChart;

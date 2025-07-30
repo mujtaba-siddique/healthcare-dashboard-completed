@@ -58,7 +58,7 @@ const ResubmissionStatsTable = () => {
                   <div className="text-sm text-gray-900">{stat.count}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">${stat.amount.toLocaleString()}</div>
+                  <div className="text-sm text-gray-900">AED{" "}{stat.amount.toLocaleString()}</div>
                 </td>
                 {/* <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getPriorityColor(stat.priority)}`}>

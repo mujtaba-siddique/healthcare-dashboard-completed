@@ -1,53 +1,3 @@
-// import React from "react";
-// import {
-//   PieChart,
-//   Pie,
-//   Cell,
-//   ResponsiveContainer,
-//   Tooltip,
-// } from "recharts";
-
-// const rejectionReasons = [
-//   { reason: "Missing Documentation", count: 245, percentage: 35, color: "#EF4444" },
-//   { reason: "Invalid Coding", count: 189, percentage: 27, color: "#F59E0B" },
-//   { reason: "Authorization Required", count: 134, percentage: 19, color: "#8B5CF6" },
-//   { reason: "Duplicate Claim", count: 89, percentage: 13, color: "#10B981" },
-//   { reason: "Other", count: 43, percentage: 6, color: "#6B7280" },
-// ];
-
-// const RejectionReasonsPieChart = () => {
-//   return (
-//     <div className="bg-white rounded-lg shadow-sm p-6">
-//       <h2 className="text-lg font-semibold text-gray-900 mb-4">Rejection Reasons</h2>
-//       <div className="h-80">
-//         <ResponsiveContainer width="100%" height="100%">
-//           <PieChart>
-//             <Pie
-//               data={rejectionReasons}
-//               cx="50%"
-//               cy="50%"
-//               labelLine={false}
-//               label={({ reason, percentage }) => `${reason} ${percentage}%`}
-//               outerRadius={80}
-//               fill="#8884d8"
-//               dataKey="count"
-//             >
-//               {rejectionReasons.map((entry, index) => (
-//                 <Cell key={`cell-${index}`} fill={entry.color} />
-//               ))}
-//             </Pie>
-//             <Tooltip />
-//           </PieChart>
-//         </ResponsiveContainer>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default RejectionReasonsPieChart;
-
-
-
 import React from "react";
 import {
   PieChart,
@@ -57,15 +7,16 @@ import {
   Tooltip,
 } from "recharts";
 
-const rejectionReasons = [
-  { reason: "Missing Documentation", count: 245, percentage: 35, color: "#EF4444" },
-  { reason: "Invalid Coding", count: 189, percentage: 27, color: "#F59E0B" },
-  { reason: "Authorization Required", count: 134, percentage: 19, color: "#8B5CF6" },
-  { reason: "Duplicate Claim", count: 89, percentage: 13, color: "#3B82F6" },
-  { reason: "Other", count: 43, percentage: 6, color: "#6B7280" },
+
+const rejectedByDenialCode = [
+  { reason: "PRCE-003", count: 2000, percentage: 27, color: "#8884d8" },
+  { reason: "CLAI-018", count: 1800, percentage: 24, color: "#82ca9d" },
+  { reason: "DUPL-001", count: 1800, percentage: 24, color: "#ffc658" },
+  { reason: "PRCE-001", count: 1000, percentage: 14, color: "#ff8042" },
+  { reason: "CLAI-012", count: 800,  percentage: 11, color: "#00C49F" },
 ];
 
-// बेहतर Tooltip बनाने के लिए एक कस्टम कंपोनेंट
+// Tooltip ke liye custom component
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
@@ -80,14 +31,14 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-const RejectionReasonsPieChart = () => {
+const DenialCodePieChart = () => {
   return (
     <div className="bg-white rounded-xl shadow-sm p-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-1">
-        Top Rejection Reasons
+        Rejected by Denial Code
       </h2>
       <p className="text-sm text-gray-500 mb-6">
-        Analysis of the most common reasons for claim rejections.
+        Analysis of rejections based on denial codes.
       </p>
       
       <div className="flex flex-col md:flex-row items-center -mt-4">
@@ -96,17 +47,17 @@ const RejectionReasonsPieChart = () => {
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
-                data={rejectionReasons}
+                data={rejectedByDenialCode}
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                innerRadius={60} // Donut chart banane ke liye
-                outerRadius={100}
+                innerRadius={40} // Donut chart banane ke liye
+                outerRadius={95}
                 paddingAngle={2}
                 fill="#8884d8"
-                dataKey="percentage" // dataKey ko 'percentage' par set kiya gaya hai
+                dataKey="percentage"
               >
-                {rejectionReasons.map((entry, index) => (
+                {rejectedByDenialCode.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.color} stroke={entry.color} />
                 ))}
               </Pie>
@@ -118,7 +69,7 @@ const RejectionReasonsPieChart = () => {
         {/* Legend Section */}
         <div className="w-full md:w-1/2 mt-4 md:mt-0 md:pl-6">
           <div className="space-y-4">
-            {rejectionReasons.map((entry) => (
+            {rejectedByDenialCode.map((entry) => (
               <div key={entry.reason} className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div
@@ -137,4 +88,4 @@ const RejectionReasonsPieChart = () => {
   );
 };
 
-export default RejectionReasonsPieChart;
+export default DenialCodePieChart;

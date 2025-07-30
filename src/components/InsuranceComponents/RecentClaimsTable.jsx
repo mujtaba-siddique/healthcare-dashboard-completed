@@ -2,11 +2,11 @@ import React from 'react';
 
 // Mock data for recent claims
 const recentClaims = [
-  { id: 'CLM-2024-001', patient: 'John Smith', insurance: 'Medicare', amount: '$1,250', status: 'Approved', date: '2024-01-15' },
-  { id: 'CLM-2024-002', patient: 'Sarah Johnson', insurance: 'Aetna', amount: '$850', status: 'Pending', date: '2024-01-14' },
-  { id: 'CLM-2024-003', patient: 'Michael Brown', insurance: 'Blue Cross', amount: '$2,100', status: 'Approved', date: '2024-01-14' },
-  { id: 'CLM-2024-004', patient: 'Emily Davis', insurance: 'Medicaid', amount: '$675', status: 'Under Review', date: '2024-01-13' },
-  { id: 'CLM-2024-005', patient: 'Robert Wilson', insurance: 'Cigna', amount: '$1,450', status: 'Denied', date: '2024-01-13' },
+  { id: 'CLM-2024-001', patient: 'John Smith', insurance: 'Medicare', amount: 'AED 1,250', status: 'Approved', date: '2024-01-15' },
+  { id: 'CLM-2024-002', patient: 'Sarah Johnson', insurance: 'Aetna', amount: 'AED 850', status: 'Pending', date: '2024-01-14' },
+  { id: 'CLM-2024-003', patient: 'Michael Brown', insurance: 'Blue Cross', amount: 'AED 2,100', status: 'Approved', date: '2024-01-14' },
+  { id: 'CLM-2024-004', patient: 'Emily Davis', insurance: 'Medicaid', amount: 'AED 675', status: 'Under Review', date: '2024-01-13' },
+  { id: 'CLM-2024-005', patient: 'Robert Wilson', insurance: 'Cigna', amount: 'AED 1,450', status: 'Denied', date: '2024-01-13' },
 ];
 
 const getStatusColor = (status) => {
@@ -21,7 +21,7 @@ const getStatusColor = (status) => {
 
 const RecentClaimsTable = () => {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 slide-up" style={{ animationDelay: '600ms' }}>
+    <div className="bg-white rounded-xl shadow-sm p-6 slide-up" style={{ animationDelay: '600ms' }}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Recent Claims</h3>
   

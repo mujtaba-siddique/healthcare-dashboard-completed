@@ -39,7 +39,7 @@ const CustomTooltip = ({ active, payload }) => {
     <div className="bg-white p-3 rounded shadow text-sm border border-gray-200">
       <p className="font-semibold text-gray-900">{category}</p>
       <p style={{ color }}>Claims Count: <strong>{count}</strong></p>
-      <p>Total Amount: <strong>${amount.toLocaleString()}</strong></p>
+      <p>Total Amount: <strong>AED{" "}{amount.toLocaleString()}</strong></p>
       {/* <p>Priority: <strong>{priority}</strong></p> */}
     </div>
   );

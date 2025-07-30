@@ -7,10 +7,12 @@ import CriticalAgingTable from "../components/SubAgingComponents/CriticalAgingTa
 
 const SubAgingPage = () => {
   return (
-    <div className="space-y-6">
+    <div className="max-w-7xl mx-auto p-1 md:p-3">
       {/* Page Header */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Sub Aging Analysis</h1>
+      <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          Sub Aging Analysis
+        </h1>
         <p className="text-gray-600">
           Monitor and analyze the aging of outstanding claims and submissions.
         </p>
@@ -19,20 +21,23 @@ const SubAgingPage = () => {
       {/* Summary Cards */}
       <SubAgingMetrics />
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Charts Row (Side-by-side) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <AgingDistributionChart />
         <AgingTrendsChart />
       </div>
 
       {/* Aging Buckets Table */}
-      <AgingBucketsTable />
+      <div className="mb-8">
+        <AgingBucketsTable />
+      </div>
 
-      {/* Recent Critical Items */}
-      <CriticalAgingTable />
+      {/* Critical Aging Table */}
+      <div>
+        <CriticalAgingTable />
+      </div>
     </div>
   );
 };
 
 export default SubAgingPage;
-

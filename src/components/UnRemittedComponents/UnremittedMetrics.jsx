@@ -3,14 +3,14 @@ import { AlertTriangle, DollarSign, Clock, FileText, TrendingDown } from 'lucide
 
 // Mock data for unremitted metrics
 const unremittedMetrics = [
-  { title: 'Total Unremitted', value: '$420K', change: '-8.2%', icon: DollarSign, color: 'from-red-500 to-pink-600' },
+  { title: 'Total Unremitted', value: 'AED 420K', change: '-8.2%', icon: DollarSign, color: 'from-red-500 to-pink-600' },
   { title: 'Outstanding Claims', value: '1,095', change: '-12', icon: FileText, color: 'from-orange-500 to-red-500' },
   { title: 'Avg. Days Outstanding', value: '31.5', change: '-2.3', icon: Clock, color: 'from-blue-500 to-indigo-600' },
   { title: 'Collection Rate', value: '87.3%', change: '+3.1%', icon: TrendingDown, color: 'from-purple-500 to-violet-600' },
 ];
 
 const MetricCard = ({ icon: Icon, value, title, change, color, delay = 0 }) => (
-  <div className={`bg-white rounded-xl shadow-lg p-6 fade-in`} style={{ animationDelay: `${delay}ms` }}>
+  <div className={`bg-white rounded-xl shadow-sm p-6 fade-in`} style={{ animationDelay: `${delay}ms` }}>
     <div className="flex items-center justify-between">
       <div className={`p-3 rounded-xl bg-gradient-to-br ${color}`}>
         <Icon className="h-6 w-6 text-white" />

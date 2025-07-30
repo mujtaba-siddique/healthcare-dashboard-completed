@@ -12,7 +12,7 @@ const denialReasonsData = [
 
 const DenialReasonsChart = () => {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 slide-up" style={{ animationDelay: '400ms' }}>
+    <div className="bg-white rounded-xl shadow-sm p-6 slide-up" style={{ animationDelay: '400ms' }}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Top Denial Reasons</h3>
        

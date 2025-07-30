@@ -31,9 +31,9 @@ const processedData = yearlyRawData.map(item => ({
 
 
 // Function to format large currency numbers for the Y-axis (e.g., 2,000,000 -> $2M)
-const formatCurrencyAxis = (tick) => `$${(tick / 1000000).toFixed(1)}M`;
+const formatCurrencyAxis = (tick) => `AED${(tick / 1000000).toFixed(1)}M`;
 // Function to format smaller numbers for the rejections axis
-const formatCountAxis = (tick) => `${(tick / 1000)}k`;
+const formatCountAxis = (tick) => `AED${(tick / 1000)}k`;
 
 
 // Custom tooltip to display all data points clearly
@@ -75,7 +75,7 @@ const YearlyComparisonChart = () => {
   const endYear = processedData[processedData.length - 1].year;
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 slide-up">
+    <div className="bg-white rounded-xl shadow-sm p-6 slide-up">
       <h3 className="text-xl font-semibold text-gray-900 mb-6">
         Yearly Performance 
       </h3>

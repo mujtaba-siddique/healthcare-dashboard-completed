@@ -127,7 +127,7 @@ const AdvancedLineChart = ({ data, title }) => {
           },
           color: 'rgb(107, 114, 128)',
           callback: function(value) {
-            return '$' + (value / 1000) + 'K';
+            return 'AED' + (value / 1000) + 'K';
           }
         },
       },

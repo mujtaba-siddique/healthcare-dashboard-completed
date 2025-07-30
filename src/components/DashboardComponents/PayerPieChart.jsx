@@ -89,7 +89,7 @@ const CustomTooltip = ({ active, payload }) => {
           <span className="w-3 h-3 rounded-full inline-block mr-3 border-2 border-white" style={{ backgroundColor: data.color }}></span>
           <p className="font-bold text-lg">{data.name}</p>
         </div>
-        <p className="text-sm text-gray-300">Amount: <span className="font-medium text-white">${data.amount.toLocaleString()}</span></p>
+        <p className="text-sm text-gray-300">Amount: <span className="font-medium text-white">AED{" "}{data.amount.toLocaleString()}</span></p>
       </div>
     );
   }
@@ -111,10 +111,10 @@ const PayerPieChart = () => {
   }, [setActiveIndex]);
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 slide-up">
+    <div className="bg-white rounded-xl shadow-sm p-6 slide-up">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-semibold text-gray-900">Payer Distribution</h3>
-        <button className="text-sm text-blue-600 hover:text-blue-800">View Details</button>
+ 
       </div>
       <div style={{ height: '300px' }}>
         <ResponsiveContainer width="100%" height="100%">

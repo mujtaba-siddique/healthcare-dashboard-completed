@@ -13,7 +13,7 @@ const unremittedTrendsData = [
 ]
 const UnremittedTrendsChart = () => {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 slide-up">
+    <div className="bg-white rounded-xl shadow-sm p-6 slide-up">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Unremitted Trends</h3>
         {/* <div className="flex space-x-2">

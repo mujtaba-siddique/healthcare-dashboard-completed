@@ -1,83 +1,134 @@
 import React from "react";
 
-const distributionData = [
-  { name: "Emergency", value: 35, amount: 2850000, color: "#3B82F6" },
-  { name: "Outpatient", value: 28, amount: 1890000, color: "#10B981" },
-  { name: "Inpatient", value: 20, amount: 4560000, color: "#8B5CF6" },
-  { name: "Diagnostic", value: 12, amount: 890000, color: "#F59E0B" },
-  { name: "Surgical", value: 5, amount: 3240000, color: "#EF4444" },
+// Data from the image, adapted for the table structure
+const professionalData = [
+  { id: 1, name: "NAVED KHAN", share: 27.91, claimed: 387019.17, rejPercentage: 0.67 },
+  { id: 2, name: "AFTAB AHMAD", share: 27.66, claimed: 383607.79, rejPercentage: 0.36 },
+  { id: 3, name: "ROSEMEEN YOUNIS", share: 22.39, claimed: 310459.51, rejPercentage: 0.37 },
+  { id: 4, name: "ERUJ DANISH", share: 16.76, claimed: 232401.33, rejPercentage: 0.18 },
+  { id: 5, name: "GAJENDER RAJEV", share: 4.51, claimed: 62615.28, rejPercentage: 0.69 },
+  { id: 6, name: "RAKHI KHADE", share: 0.74, claimed: 10284.52, rejPercentage: 0.63 },
+  { id: 7, name: "SARWAR KHAN", share: 0.01, claimed: 178.56, rejPercentage: 0.00 },
+  { id: 8, name: "HASNA AKTER", share: 0.01, claimed: 118.15, rejPercentage: 0.00 },
+  { id: 9, name: "HARDIKKUMAR PATEL", share: 0.00, claimed: 49.00, rejPercentage: 0.00 },
+  { id: 10, name: "SASILA MOOSA MALAVIL", share: 0.00, claimed: 44.41, rejPercentage: 0.00 },
+  { id: 11, name: "NAGUR GANI MOHAMMED ZIBIRIL", share: 0.00, claimed: 24.99, rejPercentage: 0.00 },
+  { id: 12, name: "BICHU RBICHU", share: 0.00, claimed: 24.52, rejPercentage: 0.00 },
+  { id: 13, name: "S M ANAMUL ISLAM", share: 0.00, claimed: 19.58, rejPercentage: 0.00 },
+  { id: 14, name: "GLADSTON ASHYANA", share: 0.00, claimed: 15.73, rejPercentage: 0.00 },
+  { id: 15, name: "MADHURI LOHANA", share: 0.00, claimed: 6.02, rejPercentage: 0.00 },
 ];
 
-const ServiceDistributionTable = () => {
+// This component renders the responsive table with Professional Performance data
+const ProfessionalPerformanceTable = () => {
+  // Calculate derived values for each professional (rejected and received amounts)
+  const tableData = professionalData.map(item => {
+    const rejected = item.claimed * (item.rejPercentage / 100);
+    const received = item.claimed - rejected;
+    return { ...item, rejected, received };
+  });
+
+  // Calculate totals for the table footer
+  const totals = {
+    claimed: tableData.reduce((sum, item) => sum + item.claimed, 0),
+    received: tableData.reduce((sum, item) => sum + item.received, 0),
+    rejected: tableData.reduce((sum, item) => sum + item.rejected, 0),
+  };
+
+  // Calculate total rejection percentage for the footer
+  const totalRejPercentage = totals.claimed > 0 ? (totals.rejected / totals.claimed) * 100 : 0;
+
   return (
-    <div className="bg-white rounded-lg shadow-sm">
-      <div className="p-6 border-b border-gray-200">
-        <h2 className="text-lg font-semibold text-gray-900">Detailed Distribution Metrics</h2>
-        <p className="text-sm text-gray-600 mt-1">
-          Comprehensive breakdown of service distribution with revenue data.
-        </p>
-      </div>
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Service Type
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Volume %
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Total Revenue
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Avg per Service
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Status
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {distributionData.map((service, index) => (
-              <tr key={index} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex items-center">
-                    <div
-                      className="w-4 h-4 rounded-full mr-3"
-                      style={{ backgroundColor: service.color }}
-                    ></div>
-                    <div className="text-sm font-medium text-gray-900">
-                      {service.name}
-                    </div>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{service.value}%</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">
-                    ${service.amount.toLocaleString()}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">
-                    ${Math.round(service.amount / (service.value * 100)).toLocaleString()}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                    Active
-                  </span>
-                </td>
+    <>
+      {/* CSS to hide the scrollbar while keeping scroll functionality */}
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+      `}</style>
+
+      <div className="bg-white rounded-lg shadow-sm">
+        <div className="p-6 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-900">Professional Performance</h2>
+          <p className="text-sm text-gray-600 mt-1">
+            Breakdown of claims by professional.
+          </p>
+        </div>
+
+        {/* Container for horizontal scrolling on small screens */}
+        <div className="overflow-x-auto hide-scrollbar">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Professional Name
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  % of Share
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Claimed Amount
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Received Amount
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Rejected Amount
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Rej %
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {tableData.map((item) => (
+                <tr key={item.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm font-medium text-gray-900">{item.name}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{item.share.toFixed(2)}%</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">
+                      AED {item.claimed.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">
+                      AED {item.received.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-red-600 font-medium">
+                      AED {item.rejected.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{item.rejPercentage.toFixed(2)}%</div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot className="bg-gray-100">
+              <tr className="font-semibold text-gray-900">
+                <td className="px-6 py-4 text-sm">Total</td>
+                <td className="px-6 py-4 text-sm">100.00%</td>
+                <td className="px-6 py-4 text-sm">AED {totals.claimed.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                <td className="px-6 py-4 text-sm">AED {totals.received.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                <td className="px-6 py-4 text-sm text-red-700">AED {totals.rejected.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                <td className="px-6 py-4 text-sm">{totalRejPercentage.toFixed(2)}%</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default ServiceDistributionTable;
-
+export default ProfessionalPerformanceTable;
