@@ -1,9 +1,7 @@
 import React from "react";
 import {
-  DollarSign,
   ClipboardList, // New Icon for Claimed
   XCircle,       // New Icon for Rejected
-  Hourglass,     // New Icon for Waiting
   Percent,       // New Icon for Rej %
   TrendingUp,    // Kept for the optional 'change' indicator
 } from "lucide-react";
@@ -18,36 +16,30 @@ const AedIcon = ({ className }) => (
 const metricsData = [
   {
     icon: ClipboardList,
-    value: "2M",
-    label: "Claimed",
+    value: " 2.58M",
+    label: "Submission",
     color: "from-blue-500 to-indigo-600",
     delay: 0,
   },
   
   {
     icon: AedIcon, // Yahan DollarSign ki jagah AedIcon ka istemaal karein
-    value: "2M",
+    value: "2.47M",
     label: "Paid",
     color: "from-green-500 to-emerald-600",
     delay: 100,
 },
   {
     icon: XCircle,
-    value: "7,449",
+    value: "8,186.74 ",
     label: "Rejected",
     color: "from-red-500 to-rose-600",
     delay: 200,
   },
-  {
-    icon: Hourglass,
-    value: "71.5K",
-    label: "Waiting",
-    color: "from-orange-500 to-amber-600",
-    delay: 300,
-  },
+  
   {
     icon: Percent,
-    value: "0.4%",
+    value: "0.33%",
     label: "Rej %",
     color: "from-purple-500 to-violet-600",
     delay: 400,

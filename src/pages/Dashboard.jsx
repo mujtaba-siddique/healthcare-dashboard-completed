@@ -1,11 +1,50 @@
 import React from "react";
-import MetricCards from "../components/DashboardComponents/MetricCards.jsx";
+import MetricCards, { AedIcon } from "../components/Common/MetricCards.jsx";
 import ClaimStatusChart from "../components/DashboardComponents/ClaimStatusChart.jsx";
 import RevenueChart from "../components/DashboardComponents/RevenueChart.jsx";
 import KPIGauges from "../components/DashboardComponents/KPIGauges.jsx";
-import OverallGraph from "../components/DashboardComponents/OverallGraph.jsx";
+import OverallGraph from "../components/DashboardComponents/YearlyComparisonChart.jsx";
 import InsuranceTypeChart from "../components/DashboardComponents/PayerPieChart.jsx";
 import AgingReportChart from "../components/DashboardComponents/AgingReportChart.jsx";
+import { ClipboardList, XCircle, Hourglass, Percent } from "lucide-react";
+
+const dashboardMetricsData = [
+  {
+    icon: ClipboardList,
+    value: "2.6M",
+    label: "Claimed",
+    color: "from-blue-500 to-indigo-600",
+    delay: 0,
+  },
+  {
+    icon: AedIcon,
+    value: "2.5M",
+    label: "Paid",
+    color: "from-green-500 to-emerald-600",
+    delay: 100,
+  },
+  {
+    icon: XCircle,
+    value: "8,187",
+    label: "Rejected",
+    color: "from-red-500 to-rose-600",
+    delay: 200,
+  },
+  {
+    icon: Hourglass,
+    value: "103.5K",
+    label: "Waiting",
+    color: "from-orange-500 to-amber-600",
+    delay: 300,
+  },
+  {
+    icon: Percent,
+    value: "0.3%",
+    label: "Rej %",
+    color: "from-purple-500 to-violet-600",
+    delay: 400,
+  },
+];
 
 const Dashboard = () => {
   return (
@@ -20,30 +59,24 @@ const Dashboard = () => {
       </div>
 
       {/* Key Metrics */}
-      <MetricCards />
+      <MetricCards data={dashboardMetricsData} />
 
-      {/* Main Charts Row (Side-by-side) */}
+      {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
-        {/* Claim Status Chart takes 5 of 12 columns */}
         <div className="lg:col-span-5">
           <ClaimStatusChart />
         </div>
-        
-        {/* Revenue Chart takes the remaining 7 of 12 columns */}
         <div className="lg:col-span-7">
           <RevenueChart />
         </div>
       </div>
-      
-      {/* Overall Performance Graph (Full Width) */}
+
       <div className="mb-8">
         <OverallGraph />
       </div>
 
-      {/* KPI Gauges */}
       <KPIGauges />
 
-      {/* Extra Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <InsuranceTypeChart />
         <AgingReportChart />

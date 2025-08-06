@@ -1,9 +1,42 @@
 import React from "react";
-import SubAgingMetrics from "../components/SubAgingComponents/SubAgingMetrics";
 import AgingDistributionChart from "../components/SubAgingComponents/AgingDistributionChart";
 import AgingTrendsChart from "../components/SubAgingComponents/AgingTrendsChart";
 import AgingBucketsTable from "../components/SubAgingComponents/AgingBucketsTable";
 import CriticalAgingTable from "../components/SubAgingComponents/CriticalAgingTable";
+import MetricCards from "../components/Common/MetricCards.jsx";
+
+import { Calendar, Clock, AlertTriangle, TrendingDown } from "lucide-react";
+
+const metricsData = [
+  {
+    icon: Calendar,
+    value: "2,950",
+    label: "Total Outstanding",
+    color: "from-blue-500 to-indigo-600",
+    delay: 0,
+  },
+  {
+    icon: Clock,
+    value: "42 days",
+    label: "Avg Age",
+    color: "from-green-500 to-emerald-600",
+    delay: 100,
+  },
+  {
+    icon: AlertTriangle,
+    value: "357",
+    label: "Critical (90+ days)",
+    color: "from-red-500 to-red-600",
+    delay: 200,
+  },
+  {
+    icon: TrendingDown,
+    value: "Improving",
+    label: "Aging Trend",
+    color: "from-purple-500 to-violet-600",
+    delay: 300,
+  },
+];
 
 const SubAgingPage = () => {
   return (
@@ -18,8 +51,8 @@ const SubAgingPage = () => {
         </p>
       </div>
 
-      {/* Summary Cards */}
-      <SubAgingMetrics />
+      {/* Metrics Cards */}
+      <MetricCards data={metricsData} />
 
       {/* Charts Row (Side-by-side) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">

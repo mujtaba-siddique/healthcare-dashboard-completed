@@ -20,7 +20,7 @@ const monthlyData = [
   { id: "24_may_placeholder", year: 2024, period: "May", almadallah: 299.72, ecare: 56.29, fmc: 486.46, khat_a_haya: null, mednet: 119.26, nas: 135.96, nextcare: 116.58 },
 ];
 
-const InsuranceDataTable2023 = () => {
+const InsuranceDataTable = () => {
     const formatValue = (value) => {
         if (value === null || value === undefined) return "-";
         return value.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -106,4 +106,4 @@ const InsuranceDataTable2023 = () => {
     );
 };
 
-export default InsuranceDataTable2023;
+export default InsuranceDataTable;

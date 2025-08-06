@@ -46,7 +46,7 @@ const getRangeColor = (range) => {
 };
 
 
-const DetailedAgingBucketsTable = () => {
+const AgingBucketsTable = () => {
 
   // Data ko .xlsx format mein export karne ke liye naya function
   const handleExportToExcel = () => {
@@ -136,4 +136,4 @@ const DetailedAgingBucketsTable = () => {
   );
 };
 
-export default DetailedAgingBucketsTable;
+export default AgingBucketsTable;

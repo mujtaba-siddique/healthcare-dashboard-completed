@@ -1,10 +1,10 @@
 import React from "react";
 // import PageHeader from "./PageHeader";
 import SummaryCards from "../components/SettlementReportComponents/SummaryCards.jsx";
-import SettlementTrendsChart from "../components/SettlementReportComponents/SettlementTrendsChart.jsx";
-import SettlementsByPayerChart from "../components/SettlementReportComponents/SettlementsByPayerChart.jsx";
-import PayerPerformanceTable from "../components/SettlementReportComponents/PayerPerformanceTable.jsx";
-import RecentSettlementsTable from "../components/SettlementReportComponents/RecentSettlementsTable.jsx";
+import SettlementTrendsChart from "../components/SettlementReportComponents/MonthlyDonutChart.jsx";
+import SettlementsByPayerChart from "../components/SettlementReportComponents/PaymentChart.jsx";
+import PayerPerformanceTable from "../components/SettlementReportComponents/InsuranceDataTable.jsx";
+import RecentSettlementsTable from "../components/SettlementReportComponents/TotalProviderRevenueChart.jsx";
 
 const SettlementReportPage = () => {
   return (
@@ -20,10 +20,7 @@ const SettlementReportPage = () => {
         </p>
       </div>
 
-      {/* Summary Cards
-      <div className="mb-8">
-        <SummaryCards />
-      </div> */}
+      
       
 
       {/* Charts Row (Side-by-side) */}

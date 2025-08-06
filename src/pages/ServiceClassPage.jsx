@@ -1,8 +1,55 @@
 import React from "react";
-import ServiceClassMetrics from "../components/ServiceClassComponents/ServiceClassMetrics";
-import ServiceClassTable from "../components/ServiceClassComponents/ServiceClassTable";
-import ServiceClassBarGraph from "../components/ServiceClassComponents/ServiceClassBarGraph";
 
+import ServiceClassTable from "../components/ServiceClassComponents/DosageFormTable";
+import ServiceClassBarGraph from "../components/ServiceClassComponents/ClaimsChart";
+import MetricCards, { AedIcon } from "../components/Common/MetricCards.jsx";
+import {
+  DollarSign,
+  ClipboardList, // New Icon for Claimed
+  XCircle,       // New Icon for Rejected
+  Hourglass,     // New Icon for Waiting
+  Percent,       // New Icon for Rej %
+  TrendingUp,    // Kept for the optional 'change' indicator
+} from "lucide-react";
+
+const MetricsData = [
+  {
+    icon: ClipboardList,
+    value: "2M",
+    label: "Claimed",
+    color: "from-blue-500 to-indigo-600",
+    delay: 0,
+  },
+  
+  {
+    icon: AedIcon, 
+    value: "2M",
+    label: "Paid",
+    color: "from-green-500 to-emerald-600",
+    delay: 100,
+},
+  {
+    icon: XCircle,
+    value: "7,449",
+    label: "Rejected",
+    color: "from-red-500 to-rose-600",
+    delay: 200,
+  },
+  {
+    icon: Hourglass,
+    value: "71.5K",
+    label: "Waiting",
+    color: "from-orange-500 to-amber-600",
+    delay: 300,
+  },
+  {
+    icon: Percent,
+    value: "0.4%",
+    label: "Rej %",
+    color: "from-purple-500 to-violet-600",
+    delay: 400,
+  },
+];
 const ServiceClassPage = () => {
   return (
     <div className="max-w-7xl mx-auto p-1 md:p-3">
@@ -17,7 +64,7 @@ const ServiceClassPage = () => {
       </div>
 
       {/* Metrics Cards */}
-      <ServiceClassMetrics />
+      <MetricCards data={MetricsData} />
 
       {/* Bar Graph Section */}
       <div className="mb-8">
