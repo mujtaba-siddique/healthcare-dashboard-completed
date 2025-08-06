@@ -16,16 +16,7 @@ const UnremittedTrendsChart = () => {
     <div className="bg-white rounded-xl shadow-sm p-6 slide-up">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Unremitted Trends</h3>
-        {/* <div className="flex space-x-2">
-          <button className="flex items-center px-3 py-1 text-xs bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 transition-colors">
-            <Download className="h-3 w-3 mr-1" />
-            Export
-          </button>
-          <button className="flex items-center px-3 py-1 text-xs bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors">
-            <RefreshCw className="h-3 w-3 mr-1" />
-            Refresh
-          </button>
-        </div> */}
+       
       </div>
       <div style={{ height: '300px' }}>
         <ResponsiveContainer width="100%" height="100%">

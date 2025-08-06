@@ -7,36 +7,47 @@ import {
   ChevronsRight,
 } from "lucide-react";
 
-const Sidebar = ({ 
-  sidebarOpen, 
-  sidebarCollapsed, 
-  setSidebarCollapsed, 
-  toggleSidebar, 
-  handleNavClick, 
-  navigationItems 
+const Sidebar = ({
+  sidebarOpen,
+  sidebarCollapsed,
+  setSidebarCollapsed,
+  toggleSidebar,
+  handleNavClick,
+  navigationItems,
 }) => {
   const location = useLocation();
 
   return (
     <div
-      className={`fixed inset-y-0 left-0 z-50 bg-white/95 backdrop-blur-sm shadow-xl border-r border-gray-200/50 transform transition-all duration-300 ease-out lg:translate-x-0 lg:static lg:inset-0 custom-scrollbar overflow-y-auto flex flex-col ${
-        sidebarCollapsed ? "w-15" : "w-65"
-      } ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+      className={`
+        fixed inset-y-0 left-0 z-50 bg-white/95 backdrop-blur-sm shadow-xl 
+        border-r border-gray-200/50 flex flex-col
+        custom-scrollbar overflow-y-auto
+        
+        {/* --- TRANSITION CLASSES - More Specific and Optimized --- */}
+        transition-[width,transform] duration-300 ease-in-out
+        
+        {/* --- WIDTH CLASSES (for lg screens and up) --- */}
+        ${sidebarCollapsed ? "lg:w-16" : "lg:w-64"}
+        
+        {/* --- TRANSFORM CLASSES (for screens smaller than lg) --- */}
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+        
+        {/* --- STATIC CLASSES for lg screens (overriding transform) --- */}
+        lg:translate-x-0 lg:static
+      `}
     >
       {/* Sidebar Header */}
-      <div className="flex items-center justify-between h-16 px-4 border-b border-gray-300 bg-gradient-to-r from-blue-200 to-purple-400">
+      <div className={`flex items-center h-16 px-4 border-b border-gray-300 bg-gradient-to-r from-blue-200 to-purple-400 flex-shrink-0 ${sidebarCollapsed ? 'justify-center' : 'justify-between'}`}>
         {!sidebarCollapsed && (
-          <div className="flex items-center">
+          <div className="flex items-center overflow-hidden">
             <Activity className="h-6 w-6 text-blue-600" />
             <div className="ml-2">
-              {/* <p className="text-lg font-bold text-gray-800">HealthCare RCM</p> */}
-
-              <p className="text-lg font-bold">
-  <span className="text-white">Prectice</span>{' '}
-  <span className="text-white">Health</span>
-</p>
-
-              <p className="text-xs text-gray-500">Dashboard </p>
+              <p className="text-lg font-bold whitespace-nowrap">
+                <span className="text-white">Practice</span>{' '}
+                <span className="text-white">Health</span>
+              </p>
+              <p className="text-xs text-gray-500 whitespace-nowrap">Dashboard</p>
             </div>
           </div>
         )}
@@ -62,19 +73,19 @@ const Sidebar = ({
       </div>
 
       {/* User Profile */}
-      {!sidebarCollapsed && (
-        <div className="p-6 border-b border-gray-200/50">
-          <div className="flex items-center">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-200 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold">
-              J
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-semibold text-gray-900">Johe Doe</p>
-              <p className="text-xs text-gray-500">Billing Manager</p>
-            </div>
+      <div className={`p-4 border-b border-gray-200/50 flex-shrink-0 ${sidebarCollapsed ? 'py-4 px-0' : ''}`}>
+        <div className={`flex items-center ${sidebarCollapsed ? 'justify-center' : ''}`}>
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-200 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold flex-shrink-0">
+            J
           </div>
+          {!sidebarCollapsed && (
+            <div className="ml-3 overflow-hidden">
+              <p className="text-sm font-semibold text-gray-900 whitespace-nowrap">John Doe</p>
+              <p className="text-xs text-gray-500 whitespace-nowrap">Billing Manager</p>
+            </div>
+          )}
         </div>
-      )}
+      </div>
 
       {/* Navigation */}
       <nav className="p-3 space-y-1 flex-1">
@@ -85,28 +96,22 @@ const Sidebar = ({
             <button
               key={index}
               onClick={() => handleNavClick(item)}
-              className={`sidebar-item w-full flex items-center transition duration-300 ease-in-out rounded-md px-2 py-2 ${
+              title={sidebarCollapsed ? item.text : ''}
+              className={`sidebar-item w-full flex items-center transition duration-200 ease-in-out rounded-md px-3 py-2 ${
                 isActive
-                  ? "bg-gradient-to-r from-blue-200 to-purple-400 text-black"
-                  : "hover:bg-gray-100"
-              }`}
+                  ? "bg-gradient-to-r from-blue-200 to-purple-400 text-black shadow-md"
+                  : "hover:bg-gray-100 text-gray-700"
+              } ${sidebarCollapsed ? 'justify-center' : ''}`}
             >
               <IconComponent
-                className={`h-5 w-5 ${
+                className={`h-5 w-5 flex-shrink-0 ${
                   isActive ? "text-white" : "text-gray-600"
                 } ${!sidebarCollapsed ? "mr-3" : ""}`}
               />
               {!sidebarCollapsed && (
-                <>
-                  <span className="flex-1 text-left text-sm">
-                    {item.text}
-                  </span>
-                  {/* {item.badge && (
-                    <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-600">
-                      {item.badge}
-                    </span>
-                  )} */}
-                </>
+                <span className="flex-1 text-left text-sm font-medium">
+                  {item.text}
+                </span>
               )}
             </button>
           );

@@ -32,10 +32,7 @@ const PayerAnalysisChart = () => {
     <div className="bg-white rounded-xl shadow-sm p-6 slide-up" style={{ animationDelay: '400ms' }}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-gray-900">Payer-wise Analysis</h3>
-        {/* <button className="flex items-center px-3 py-1 text-xs bg-orange-100 text-orange-700 rounded-full hover:bg-orange-200 transition-colors">
-          <AlertTriangle className="h-3 w-3 mr-1" />
-          Action Required
-        </button> */}
+        
       </div>
 
       <div className="space-y-4 max-h-[600px] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">

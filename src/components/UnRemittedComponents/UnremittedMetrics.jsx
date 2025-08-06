@@ -17,9 +17,7 @@ const MetricCard = ({ icon: Icon, value, title, change, color, delay = 0 }) => (
       </div>
       <div className="text-right">
         <p className="text-2xl font-bold text-gray-900">{value}</p>
-        {/* <p className={`text-sm font-medium ${change.includes('+') ? 'text-green-600' : change.includes('-') ? 'text-red-600' : 'text-gray-600'}`}>
-          {change}
-        </p> */}
+       
       </div>
     </div>
     <div className="mt-4">

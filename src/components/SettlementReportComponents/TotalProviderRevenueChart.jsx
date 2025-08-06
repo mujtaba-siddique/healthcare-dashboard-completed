@@ -29,12 +29,11 @@ const TotalProviderRevenueChart = () => {
 
   const providerKeys = ['ecare', 'fmc', 'mednet', 'nas', 'nextcare', 'ngi', 'oic'];
   
-  // 1. हर प्रोवाइडर के लिए टोटल रेवेन्यू की गणना करें
   const totalRevenueByProvider = providerKeys.map(provider => {
     return sourceData.reduce((total, monthData) => total + (monthData[provider] || 0), 0);
   });
   
-  // प्रोफेशनल कलर पैलेट
+  
   const providerColors = [
     '#4C51BF', '#ED64A6', '#38A169', '#ECC94B',
     '#F56565', '#4299E1', '#9F7AEA'
@@ -46,7 +45,7 @@ const TotalProviderRevenueChart = () => {
       {
         label: 'Total Revenue',
         data: totalRevenueByProvider,
-        backgroundColor: providerColors, // हर बार के लिए अलग रंग
+        backgroundColor: providerColors, 
         borderColor: providerColors,
         borderWidth: 1,
       },
@@ -64,7 +63,7 @@ const TotalProviderRevenueChart = () => {
         padding: { top: 10, bottom: 20 },
         color: '#1a202c'
       },
-      // 2. लेजेंड (Legend) की जरूरत नहीं है, इसलिए इसे हटा दिया गया है
+     
       legend: {
         display: false,
       },
@@ -87,7 +86,7 @@ const TotalProviderRevenueChart = () => {
     },
     scales: {
       x: {
-        // 3. स्टैकिंग (Stacking) को बंद कर दिया गया है
+       
         stacked: false, 
         grid: { display: false },
         title: {
