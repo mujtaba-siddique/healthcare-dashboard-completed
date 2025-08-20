@@ -80,11 +80,9 @@ const MonthlyDonutChart = () => {
               dataKey="amountAED"
               nameKey="month"
               outerRadius={160}
-              // innerRadius जोड़ने से यह डोनट चार्ट बन जाता है
               innerRadius={80}
               fill="#8884d8"
               paddingAngle={3}
-              // कस्टम लेबल फंक्शन का उपयोग
               label={renderCustomizedLabel}
               labelLine={false}
             >

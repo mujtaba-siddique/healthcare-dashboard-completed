@@ -1,15 +1,7 @@
 import React from "react";
-import {
-  Menu,
-  Bell,
-  ChevronDown,
-} from "lucide-react";
+import { Menu, Bell, ChevronDown } from "lucide-react";
 
-const Header = ({ 
-  toggleSidebar, 
-  getCurrentPageTitle, 
-  
-}) => {
+const Header = ({ toggleSidebar, getCurrentPageTitle }) => {
   return (
     <header className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-gray-200/50">
       <div className="flex items-center justify-between h-16 px-6">
@@ -38,7 +30,6 @@ const Header = ({
             </button>
           </div>
 
-         
           {/* User Menu */}
           <div className="relative">
             <button className="flex items-center space-x-2 p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">

@@ -1,11 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import {
-  X,
-  Activity,
-  ChevronsLeft,
-  ChevronsRight,
-} from "lucide-react";
+import { X, Activity, ChevronsLeft, ChevronsRight } from "lucide-react";
 
 const Sidebar = ({
   sidebarOpen,
@@ -38,16 +33,22 @@ const Sidebar = ({
       `}
     >
       {/* Sidebar Header */}
-      <div className={`flex items-center h-16 px-4 border-b border-gray-300 bg-gradient-to-r from-blue-200 to-purple-400 flex-shrink-0 ${sidebarCollapsed ? 'justify-center' : 'justify-between'}`}>
+      <div
+        className={`flex items-center h-16 px-4 border-b border-gray-300 bg-gradient-to-r from-blue-200 to-purple-400 flex-shrink-0 ${
+          sidebarCollapsed ? "justify-center" : "justify-between"
+        }`}
+      >
         {!sidebarCollapsed && (
           <div className="flex items-center overflow-hidden">
             <Activity className="h-6 w-6 text-blue-600" />
             <div className="ml-2">
               <p className="text-lg font-bold whitespace-nowrap">
-                <span className="text-white">Practice</span>{' '}
+                <span className="text-white">Practice</span>{" "}
                 <span className="text-white">Health</span>
               </p>
-              <p className="text-xs text-gray-500 whitespace-nowrap">Dashboard</p>
+              <p className="text-xs text-gray-500 whitespace-nowrap">
+                Dashboard
+              </p>
             </div>
           </div>
         )}
@@ -73,15 +74,27 @@ const Sidebar = ({
       </div>
 
       {/* User Profile */}
-      <div className={`p-4 border-b border-gray-200/50 flex-shrink-0 ${sidebarCollapsed ? 'py-4 px-0' : ''}`}>
-        <div className={`flex items-center ${sidebarCollapsed ? 'justify-center' : ''}`}>
+      <div
+        className={`p-4 border-b border-gray-200/50 flex-shrink-0 ${
+          sidebarCollapsed ? "py-4 px-0" : ""
+        }`}
+      >
+        <div
+          className={`flex items-center ${
+            sidebarCollapsed ? "justify-center" : ""
+          }`}
+        >
           <div className="w-10 h-10 bg-gradient-to-br from-blue-200 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold flex-shrink-0">
             J
           </div>
           {!sidebarCollapsed && (
             <div className="ml-3 overflow-hidden">
-              <p className="text-sm font-semibold text-gray-900 whitespace-nowrap">John Doe</p>
-              <p className="text-xs text-gray-500 whitespace-nowrap">Billing Manager</p>
+              <p className="text-sm font-semibold text-gray-900 whitespace-nowrap">
+                John Doe
+              </p>
+              <p className="text-xs text-gray-500 whitespace-nowrap">
+                Billing Manager
+              </p>
             </div>
           )}
         </div>
@@ -96,12 +109,12 @@ const Sidebar = ({
             <button
               key={index}
               onClick={() => handleNavClick(item)}
-              title={sidebarCollapsed ? item.text : ''}
+              title={sidebarCollapsed ? item.text : ""}
               className={`sidebar-item w-full flex items-center transition duration-200 ease-in-out rounded-md px-3 py-2 ${
                 isActive
                   ? "bg-gradient-to-r from-blue-200 to-purple-400 text-black shadow-md"
                   : "hover:bg-gray-100 text-gray-700"
-              } ${sidebarCollapsed ? 'justify-center' : ''}`}
+              } ${sidebarCollapsed ? "justify-center" : ""}`}
             >
               <IconComponent
                 className={`h-5 w-5 flex-shrink-0 ${
