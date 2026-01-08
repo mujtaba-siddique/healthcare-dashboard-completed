@@ -51,7 +51,7 @@ const metricsData = [
 
 const ServiceDistributionPage = () => {
   return (
-    <div className="max-w-7xl mx-auto p-1 md:p-3">
+    <div className="mx-auto p-1 md:p-3">
       {/* Page Header */}
       <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">

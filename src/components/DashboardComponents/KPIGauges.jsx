@@ -19,7 +19,7 @@ const kpiData = [
     delay: 0,
   },
   {
-    title: "Clean Claim Rate",
+    title: "Claim Rate",
     value: 94,
     color: "#3b82f6",
     delay: 100,
@@ -85,7 +85,7 @@ const KPIGauges = () => {
       {kpiData.map((kpi, index) => (
         <div
           key={index}
-          className="chart-container p-6 slide-up"
+          className="chart-container p-10 slide-up"
           style={{ animationDelay: `${kpi.delay}ms` }}
         >
           <h4 className="text-lg font-semibold text-gray-900 mb-4">
